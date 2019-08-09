@@ -1,5 +1,6 @@
 <?php
     require_once 'configs/core.php';
+    require_once 'functions/core.php';
 
     if (!isset ($_REQUEST)) {
         return;
@@ -14,6 +15,10 @@
     switch ($data->type) {
         case 'confirmation':
             echo $confirmationToken;
+            break;
+        case 'message_new':
+            decoder($data->object, $token);
+            echo 'ok';
             break;
     }
 ?>
